@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Cursovai.UserControl_History"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cursovai"
+             xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+             mc:Ignorable="d" 
+             Height="auto" Width="auto">
+    <Grid>
+        <ListView Margin="5">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=id}">Номер</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=cost}">Цена</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=state}">Статус</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=data_registration}">Дата регистарции</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=data_completion}">Дата выполнения</GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListViewItem x:Name="order"/>
+        </ListView>
+    </Grid>
+</UserControl>
