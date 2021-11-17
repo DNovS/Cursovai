@@ -8,6 +8,8 @@ namespace BLL.Interfaces
 {
     public interface IServiceOrder
     {
-        bool CreateOrder(BLL.Model.ModelOrder order, string code);
+        bool CreateOrder(BLL.Model.ModelOrder order);
+        Model.ModelOrder MakeOrder(Model.ModelOrder modelOrder);
+        Model.ModelOrder Use_Code(Model.ModelOrder modelOrder, string code);
     }
 }

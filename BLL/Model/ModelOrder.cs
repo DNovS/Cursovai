@@ -20,6 +20,7 @@ namespace BLL.Model
         public int id_client { get; set; }
 
         public int? id_code { get; set; }
+        public List<DAL.LineOrder> lineOrders { get; set; }
         public List<int> line;
         public List<int> quant;
         public ModelOrder() { }

@@ -32,7 +32,7 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <Grid Margin="180 80 0 0">
+        <Grid Margin="180 75 0 0">
             <Grid x:Name="GridPrincipal" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Grid>
         <Grid Width="180" HorizontalAlignment="Left" Background="#ff221f22">
