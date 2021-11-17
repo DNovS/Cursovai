@@ -93,6 +93,8 @@
       <DependentUpon>UserControl_Report.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util\NinjectRegistration.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
