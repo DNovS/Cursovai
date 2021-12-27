@@ -82,5 +82,15 @@ namespace Cursovai.ViewModel
                 OnPropertyChanged("");
             }
         }
+
+        public string visible
+        {
+            get
+            {
+                if (_technic != null)
+                    return "Visible";
+                else return "Hidden";
+            }
+        }
     }
 }

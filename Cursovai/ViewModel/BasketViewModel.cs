@@ -43,7 +43,7 @@ namespace Cursovai.ViewModel
         }
         #endregion
 
-        
+
         #region Оформить заказ
         //private ICommand _MakeOrder;
         public ICommand MakeOrder
@@ -53,7 +53,7 @@ namespace Cursovai.ViewModel
                 return new RelayCommand(args => BuyToTehnic(args));
             }
         }
-        private void  BuyToTehnic(object args)
+        private void BuyToTehnic(object args)
         {
             ModelOrder modelOrder = new ModelOrder()
             {
@@ -92,13 +92,31 @@ namespace Cursovai.ViewModel
                 OnPropertyChanged("");
             }
         }
+        public string visible
+        {
+            get
+            {
+                if (_technic != null)
+                    return "Visible";
+                else return "Hidden";
+            }
+        }
+        public string visible_order
+        {
+            get
+            {
+                if (_technics.Count > 0) 
+                    return "Visible";
+                else return "Hidden";
+            }
+        }
         private int _count;
         public int count
         {
             get
             {
                 if (_technic != null)
-                _count = cart.line().Find(i=>i.id_technic==_technic.id_technic).quantity;
+                    _count = cart.line().Find(i => i.id_technic == _technic.id_technic).quantity;
                 return _count;
             }
             set
