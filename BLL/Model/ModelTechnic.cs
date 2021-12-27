@@ -13,7 +13,7 @@ namespace BLL.Model
         public string name { get; set; }
         public int quantity_warehouse { get; set; }
         public decimal cost { get; set; }
-        public byte[] image { get; set; }
+        public string image { get; set; }
 
         public int id_category { get; set; }
         public ModelTechnic() { }

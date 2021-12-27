@@ -30,11 +30,11 @@
         </Grid>
         <Grid  Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="97*"/>
+                <RowDefinition Height="200*"/>
                 <RowDefinition Height="403*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <Image x:Name="image" Margin="5"/>
+                <Image x:Name="image" Source="{Binding technic.image}" Margin="5"/>
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Vertical">
@@ -52,8 +52,8 @@
                         <TextBlock x:Name="count" FontSize="15" Text="{Binding Path=technic.quantity_warehouse}" Margin="0,5,0,5"/>
                     </StackPanel>
                     <Button MaxWidth="170" Content="Удалить из корзины" Command="{Binding DeleteTechnic}"/>
-
                     <TextBlock x:Name="specification" FontSize="15" Text="Описание" Margin="5"/>
+                    <TextBlock Text="{Binding technic.specifications}" FontSize="15" Margin="5"/>
                 </StackPanel>
             </Grid>
         </Grid>

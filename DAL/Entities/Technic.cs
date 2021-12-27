@@ -16,7 +16,6 @@ namespace DAL
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id_technic { get; set; }
 
         [StringLength(50)]
@@ -30,10 +29,9 @@ namespace DAL
 
         public decimal cost { get; set; }
 
-        [Column(TypeName = "image")]
-        public byte[] image { get; set; }
-
         public int id_category { get; set; }
+
+        public string image { get; set; }
 
         public virtual Category Category { get; set; }
 

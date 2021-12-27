@@ -16,7 +16,6 @@ namespace DAL
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id_client { get; set; }
 
         [StringLength(50)]

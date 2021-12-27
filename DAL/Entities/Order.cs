@@ -19,10 +19,12 @@ namespace DAL
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id_order { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime complition_date { get; set; }
 
         public decimal cost { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime registration_date { get; set; }
 
         public int id_state { get; set; }
