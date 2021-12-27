@@ -16,7 +16,7 @@
         <Grid Grid.Column="0">
 
             <StackPanel MinWidth="200" Margin="10" Orientation="Vertical" Grid.ColumnSpan="2">
-                <ScrollViewer x:Name="Scroll" Height="150"  Margin="10">
+                <ScrollViewer x:Name="Scroll" Height="400"  Margin="10">
                     <ListView x:Name="Technic" ItemsSource="{Binding technics}" Margin="5" SelectedItem="{Binding technic}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
