@@ -8,5 +8,6 @@ namespace BLL.Interfaces
 {
     public interface IServiceHistory
     {
+        List<Model.ModelOrder> orders();
     }
 }

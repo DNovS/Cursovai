@@ -8,21 +8,25 @@ namespace BLL.Model
 {
     public class ModelOrder
     {
+        #region
+        public string fcs { get; set; }
+        public string color { get; set; }
+        public string date_com { get; set; }
+        public string date_reg { get; set; }
+        #endregion
+        public string code { get; set; }
         public int id_order { get; set; }
+        public DateTime registration_date { get; set; }
         public DateTime complition_date { get; set; }
 
         public decimal cost { get; set; }
-
-        public DateTime registration_date { get; set; }
 
         public int id_state { get; set; }
 
         public int id_client { get; set; }
 
         public int? id_code { get; set; }
-        public List<DAL.LineOrder> lineOrders { get; set; }
-        public List<int> line;
-        public List<int> quant;
+        public List<ModelLineOrder> lineOrders { get; set; }
         public ModelOrder() { }
         public ModelOrder(DAL.Order order)
         {
@@ -33,8 +37,24 @@ namespace BLL.Model
             this.id_order = order.id_order;
             this.id_state = order.id_state;
             this.registration_date = order.registration_date;
-            this.line = order.LineOrder.Select(i => i.id_line).ToList();
-            this.quant = order.LineOrder.Select(i => i.quantity).ToList();
+            this.lineOrders = order.LineOrder.Select(i => new Model.ModelLineOrder(i)).ToList();
+            this.fcs = order.Client.FCS;
+            this.date_com = complition_date == DateTime.MinValue ? "\"не определено\"" : complition_date.ToString();
+            this.date_reg = registration_date == DateTime.MinValue ? "\"не определено\"" : registration_date.ToString();
+            switch (order.id_state)
+            {
+                case 1:
+                    color = "Yellow";
+                    break;
+                case 2:
+                    color = "Green";
+                    break;
+                case 3:
+                    color = "Red";
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

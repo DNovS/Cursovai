@@ -17,6 +17,7 @@ namespace BLL.Service
         public bool CreateOrder(Model.ModelOrder modelOrder)
         {
             DAL.Order order;
+            
             if (modelOrder.id_order > 0)
             {
                 order = repositoryDB.Orders.GetItem(modelOrder.id_order);
@@ -24,18 +25,36 @@ namespace BLL.Service
                 order.id_state = modelOrder.id_state;
                 order.id_code = modelOrder.id_code;
                 order.id_client = modelOrder.id_client;
-                order.LineOrder = modelOrder.lineOrders;
+                order.LineOrder = new List<DAL.LineOrder>(modelOrder.lineOrders.Select(i => new DAL.LineOrder()
+                {
+                    id_technic = i.id_technic,
+                    cost = i.cost,
+                    quantity = i.quantity
+                }).ToList());
+                order.complition_date = modelOrder.registration_date.AddDays(2);     
                 order.registration_date = modelOrder.registration_date;
             }
             else
             {
+                modelOrder.id_order = repositoryDB.Orders.List.Last().id_order + 1;
+                modelOrder.lineOrders.First().id_line = repositoryDB.LineOreders.List.Last().id_line + 1;
+                for (int i = 1; i < modelOrder.lineOrders.Count; i++) modelOrder.lineOrders[i].id_line = modelOrder.lineOrders[i - 1].id_line + 1;
                 order = new DAL.Order
                 {
+                    id_order = modelOrder.id_order,
                     cost = modelOrder.cost,
                     id_state = modelOrder.id_state,
                     id_code = modelOrder.id_code,
                     id_client = modelOrder.id_client,
-                    LineOrder = modelOrder.lineOrders,
+                    LineOrder = new List<DAL.LineOrder>(modelOrder.lineOrders.Select(i => new DAL.LineOrder()
+                    {
+                        id_line = i.id_line,
+                        id_order = i.id_order,
+                        id_technic = i.id_technic,
+                        cost = i.cost,
+                        quantity = i.quantity
+                    }).ToList()),
+                    complition_date = modelOrder.registration_date.AddDays(2),
                     registration_date = modelOrder.registration_date,
                 };
             }
@@ -44,37 +63,32 @@ namespace BLL.Service
         }
         public Model.ModelOrder MakeOrder(Model.ModelOrder modelOrder)
         {
-            List<DAL.LineOrder> lineOrders = new List<DAL.LineOrder>();
+            
             decimal sum = 0;
-            int i = 0;
-            foreach (var id in modelOrder.line)
+            foreach (var id in modelOrder.lineOrders)
             {
-                DAL.Technic technic = repositoryDB.Technics.GetItem(id);
+                DAL.Technic technic = repositoryDB.Technics.GetItem(id.id_technic);
                 if (technic == null)
                     throw new Exception("Техника не найдена");
-                lineOrders.Add(new DAL.LineOrder
-                {
-                    id_order = modelOrder.id_order,
-                    id_technic = technic.id_technic,
-                    cost = technic.cost * modelOrder.quant[i],
-                    quantity = modelOrder.quant[i],
-                });
-                sum += lineOrders[i].cost;
-                i++;
+                sum += id.cost;
             }
             return new Model.ModelOrder
             {
                 cost = sum,
-                id_state = modelOrder.id_state,
+                id_state = 1,
                 id_client = modelOrder.id_client,
-                lineOrders = lineOrders,
+                lineOrders = modelOrder.lineOrders,
                 registration_date = DateTime.Now,
             };
         }
         public Model.ModelOrder Use_Code(Model.ModelOrder modelOrder, string code)
         {
             var g = repositoryDB.PromoCodes.List.Where(o => o.name == code && o.number_use > 0).FirstOrDefault();
-            if (g != null) modelOrder.cost = new Model.ModelPromoCode(g).Check(modelOrder.cost);
+            if (g != null)
+            {
+                modelOrder.cost = new Model.ModelPromoCode(g).Check(modelOrder.cost, repositoryDB);
+                modelOrder.id_code = g.id_code;
+            }
             return modelOrder;
         }
     }

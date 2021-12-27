@@ -16,8 +16,14 @@ namespace BLL.Service
             this.repositoryDB = dB;
         }
 
-        public List<ModelReport.ReportGraphic> Graphics => repositoryDB.report.graphics()
-                .Select(i => new ModelReport.ReportGraphic() { date = i.date, Total = i.Total })
+        public List<ModelReport.ReportGraphic> Graphics(DateTime start_time, DateTime end_time) => repositoryDB.report.graphics(start_time, end_time)
+                .Select(i => new ModelReport.ReportGraphic()
+                {
+                    date = i.date,
+                    Total_cancellation = i.Total_cancellation,
+                    Total_completion = i.Total_completion,
+                    Total_expectation = i.Total_expectation
+                })
                 .ToList();
     }
 }

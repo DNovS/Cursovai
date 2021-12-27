@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.Model;
 
 namespace BLL.Service
 {
@@ -13,5 +14,6 @@ namespace BLL.Service
         {
             this.repositoryDB = dB;
         }
+        public List<ModelOrder> orders() => repositoryDB.Orders.List.Select(i => new ModelOrder(i)).ToList();
     }
 }

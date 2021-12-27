@@ -10,7 +10,9 @@ namespace BLL.Model
     {
         public class ReportGraphic
         {
-            public int Total { get; set; }
+            public int Total_completion { get; set; }
+            public int Total_expectation { get; set; }
+            public int Total_cancellation { get; set; }
             public int date { get; set; }
         }
     }

@@ -17,6 +17,8 @@ namespace BLL.Util
         public override void Load()
         {
             Bind<DAL.Interfaces.IRepositoryDB>().To<DAL.Repository.SQLRepositoryDB>().InSingletonScope().WithConstructorArgument(connection);
+            Bind<BLL.Model.ModelBasket>().ToSelf();
+            //Bind<BLL.Service.ServiceCart>().To<BLL.Model.ModelBasket>();
         }
     }
 }

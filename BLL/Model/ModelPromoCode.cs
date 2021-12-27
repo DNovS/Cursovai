@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Interfaces;
 
 namespace BLL.Model
 {
@@ -27,12 +28,14 @@ namespace BLL.Model
             this.number_use = promoCode.number_use;
             this.number_use_start = promoCode.number_use_start;
         }
-        public decimal Check(decimal s)
+        public decimal Check(decimal s, IRepositoryDB dB)
         {
             if (number_use > 0)
             {
                 number_use--;
-                return s * (1 - discount_amount);
+                dB.PromoCodes.GetItem(id_code).number_use--;
+                dB.Save();
+                return s * (1 - (decimal)discount_amount / 100);
             }
             else return s;
         }

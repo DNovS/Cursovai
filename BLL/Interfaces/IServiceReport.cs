@@ -8,6 +8,6 @@ namespace BLL.Interfaces
 {
     public interface IServiceReport
     {
-        List<Model.ModelReport.ReportGraphic> Graphics { get; }
+        List<Model.ModelReport.ReportGraphic> Graphics(DateTime start_time, DateTime end_time);
     }
 }

@@ -8,6 +8,6 @@ namespace DAL.Interfaces
 {
     public interface IRepositoryReport
     {
-        List<Entities.ReportGraphic> graphics();
+        List<Entities.ReportGraphic> graphics(DateTime start_time, DateTime end_time);
     }
 }
