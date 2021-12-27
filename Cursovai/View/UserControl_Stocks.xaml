@@ -7,14 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="600">
     <Grid>
-        <ScrollViewer Height="450" Width="550" Margin="25">
+        <ScrollViewer  Margin="25">
             <ListView x:Name="Promocode" Margin="5" ItemsSource="{Binding promoCodes}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="5" Background="Yellow">
+                        <Border BorderBrush="IndianRed" BorderThickness="3">
+                            
+                        <StackPanel Margin="5" Background="LemonChiffon">
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock Text="Осталось использований " FontSize="20" Margin="5"/>
-                                <TextBlock x:Name="number_use" Text="{Binding Path = number_use}" Width="100"/>
+                                <TextBlock x:Name="number_use" FontSize="20" VerticalAlignment="Center" Text="{Binding Path = number_use}" Width="100"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock Text="Размер скидки " FontSize="20" Margin="5"/>
@@ -25,6 +27,7 @@
                                 <TextBlock x:Name="name" Text="{Binding Path=name}" FontSize="20" Margin="5"/>
                             </StackPanel>
                         </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

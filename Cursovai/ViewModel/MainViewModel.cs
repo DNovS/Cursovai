@@ -39,7 +39,7 @@ namespace Cursovai.ViewModel
         }
         private void _AddTechnictoCart (object args)
         {
-            if (cart.line().Find(i => i.id_technic == technic.id_technic) == null) cart.AddTechnic(technic, 1);
+            if (cart.line().Find(i => i.id_technic == _technic.id_technic) == null) cart.AddTechnic(_technic, _count);
         }
         #endregion
 
@@ -66,6 +66,19 @@ namespace Cursovai.ViewModel
             set
             {
                 _technic = value;
+                OnPropertyChanged("");
+            }
+        }
+        private int _count;
+        public int count
+        {
+            get
+            {
+                return _count;
+            }
+            set
+            {
+                _count = value;
                 OnPropertyChanged("");
             }
         }

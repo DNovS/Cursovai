@@ -7,10 +7,12 @@
         mc:Ignorable="d"
         Title="Window_Order" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
+        <Border BorderBrush="IndianRed" BorderThickness="3">
+            
         <StackPanel Orientation="Vertical" Margin="5" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Text="ФИО:* " FontSize="20" Margin="5"/>
-                <TextBox x:Name="fcs" Text="{Binding model.fcs}" Width="100"/>
+                <TextBox x:Name="fcs" FontSize="20" HorizontalAlignment="Center" Text="{Binding model.fcs}" Width="100"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Text="Цена: " FontSize="20" Margin="5"/>
@@ -18,14 +20,15 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Text="Дата " FontSize="20" Margin="5"/>
-                <TextBlock x:Name="date" Text="{Binding model.registration_date}" FontSize="20" Margin="5"/>
+                    <TextBlock x:Name="date" Text="{Binding model.registration_date}" FontSize="20" Margin="5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Text="Промокод: " FontSize="20" Margin="5"/>
-                <TextBox x:Name="code" Text="{Binding model.code}" Width="100" Margin="5"/>
+                <TextBox x:Name="code" Text="{Binding model.code}" Width="100" FontSize="20" Margin="5"/>
             </StackPanel>
             <Button Content="Заказать" Margin="5 15" Command="{Binding Ordered}" Click="Button_Close"/>
             <Button Content="Закрыть" Margin="5" Click="Button_Close"/>
         </StackPanel>
+        </Border>
     </Grid>
 </Window>

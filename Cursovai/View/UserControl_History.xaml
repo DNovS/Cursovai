@@ -8,19 +8,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="600">
     <Grid>
-        <ScrollViewer Height="450" Width="550" Margin="25">
+        <ScrollViewer Height="450" Margin="25">
             <ListView x:Name="Order" Margin="5" ItemsSource="{Binding orders}">
-                <ListView.ItemTemplate>
+                <ListView.ItemTemplate >
                     <DataTemplate>
-                        <StackPanel Margin="5" Background="{Binding color}">
+                        <Border HorizontalAlignment="Center" BorderBrush="{Binding color}" BorderThickness="3">                           
+                        <StackPanel HorizontalAlignment="Center" Margin="5" Background="LemonChiffon">
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock Text="ФИО: " FontSize="20" Margin="5"/>
-                                <TextBlock x:Name="fcs" Text="{Binding Path = fcs}" Width="100"/>
+                                <TextBlock x:Name="fcs" FontSize="20" VerticalAlignment="Center" Text="{Binding Path = fcs}" Width="100"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock Text="Цена: " FontSize="20" Margin="5"/>
-                                <TextBlock x:Name="cost" Text="{Binding Path=cost}" FontSize="20" Margin="5"/>
-                            </StackPanel>
+                                    <TextBlock x:Name="cost" Text="{Binding Path=cost}" FontSize="20" Margin="0,5,0,5" VerticalAlignment="Center"/>
+                                </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="5">
                                 <TextBlock Text="Дата выполнения " FontSize="20" Margin="5"/>
                                 <TextBlock x:Name="date_compl" Text="{Binding Path=date_com}" FontSize="20" Margin="5"/>
@@ -30,6 +31,7 @@
                                 <TextBlock x:Name="date_reg" Text="{Binding Path=date_reg}" FontSize="20" Margin="5"/>
                             </StackPanel>
                         </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

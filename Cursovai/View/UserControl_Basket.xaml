@@ -4,13 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Cursovai.View" 
-             xmlns:viewmodel="clr-namespace:Cursovai.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:BasketViewModel}"
+             xmlns:viewmodel="clr-namespace:Cursovai.ViewModel" xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes" d:DataContext="{d:DesignInstance Type=viewmodel:BasketViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="600">
+
     <Grid>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <ScrollViewer x:Name="Scroll" Margin="10" Width="200" Height="400">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="21*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+
+            <StackPanel MinWidth="200" Margin="10" Orientation="Vertical" Grid.ColumnSpan="2">
+                <ScrollViewer x:Name="Scroll" Height="150"  Margin="10">
                     <ListView x:Name="Technic" ItemsSource="{Binding technics}" Margin="5" SelectedItem="{Binding technic}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -19,15 +25,37 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </ScrollViewer>
-                <StackPanel Orientation="Vertical" Width="200">
-                    <Image x:Name="image" Margin="5"/>
-                    <TextBlock x:Name="name" Text="{Binding technic.name}" Margin="5"/>
-                    <TextBlock x:Name="cost" Text="{Binding technic.cost}" Margin="5"/>
-                    <TextBlock x:Name="specification" Margin="5"/>
-                    <Button Content="Удалить из корзину" Margin="5 300 5 0" Command="{Binding DeleteTechnic}"/>
-                </StackPanel>
+        <Button HorizontalAlignment="Center" Content="Оформить заказ"  Command="{Binding MakeOrder}"/>
             </StackPanel>
-            <Button HorizontalAlignment="Center" Content="Оформить заказ" Margin="5" Command="{Binding MakeOrder}"/>
-        </StackPanel>
+        </Grid>
+        <Grid  Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="97*"/>
+                <RowDefinition Height="403*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Image x:Name="image" Margin="5"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Модель: " FontSize="15" VerticalAlignment="Center"></TextBlock>
+                        <TextBlock x:Name="name" VerticalAlignment="Center" HorizontalAlignment="Left" MaxWidth="200" FontSize="15" TextWrapping="Wrap" Text="{Binding Path=technic.name}" Margin="5"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Стоимость: " FontSize="15" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="cost" FontSize="15" Text="{Binding Path=technic.cost}" Margin="0,5,0,5"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Количество: " FontSize="15" VerticalAlignment="Center"/>
+                        <TextBox x:Name="select_count" FontSize="15" Text="{Binding Path=count}" Margin="10,1,5,5"/>
+                        <TextBlock x:Name="count" FontSize="15" Text="{Binding Path=technic.quantity_warehouse}" Margin="0,5,0,5"/>
+                    </StackPanel>
+                    <Button MaxWidth="170" Content="Удалить из корзины" Command="{Binding DeleteTechnic}"/>
+
+                    <TextBlock x:Name="specification" FontSize="15" Text="Описание" Margin="5"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

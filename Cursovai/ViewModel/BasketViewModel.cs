@@ -92,6 +92,21 @@ namespace Cursovai.ViewModel
                 OnPropertyChanged("");
             }
         }
-        
+        private int _count;
+        public int count
+        {
+            get
+            {
+                if (_technic != null)
+                _count = cart.line().Find(i=>i.id_technic==_technic.id_technic).quantity;
+                return _count;
+            }
+            set
+            {
+                _count = value;
+                OnPropertyChanged("");
+            }
+        }
+
     }
 }

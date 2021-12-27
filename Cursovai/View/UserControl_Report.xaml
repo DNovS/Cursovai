@@ -9,9 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="600">
     <Grid>
-        <StackPanel Orientation="Horizontal">
-            <chart:CartesianChart x:Name="chart" Margin="5"/>
-            <StackPanel Margin="5" Orientation="Vertical" HorizontalAlignment="Right">
+        <StackPanel >
+            <chart:CartesianChart VerticalAlignment="Center" Height="300" Width="200" x:Name="chart" Margin="5"/>
+            <StackPanel Margin="5" Orientation="Vertical" VerticalAlignment="Center">
                 <ComboBox x:Name="data_st" ItemsSource="{Binding start_times}" SelectedItem="{Binding start_time}" Margin="5"/>
                 <ComboBox x:Name="data_end" ItemsSource="{Binding end_times}" SelectedItem="{Binding end_time}" Margin="5"/>
                 <Button Content="Поиcк" Command="{Binding search}" Margin="5"/>
