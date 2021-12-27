@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Cursovai.UserControl_Report"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cursovai"
+             xmlns:chart="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodel="clr-namespace:Cursovai.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ReportViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <chart:CartesianChart x:Name="chart" Margin="5"/>
+            <StackPanel Margin="5" Orientation="Vertical" HorizontalAlignment="Right">
+                <ComboBox x:Name="data_st" ItemsSource="{Binding start_times}" SelectedItem="{Binding start_time}" Margin="5"/>
+                <ComboBox x:Name="data_end" ItemsSource="{Binding end_times}" SelectedItem="{Binding end_time}" Margin="5"/>
+                <Button Content="Поиcк" Command="{Binding search}" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

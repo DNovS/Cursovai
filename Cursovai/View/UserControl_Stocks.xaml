@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Cursovai.View.UserControl_Stocks"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cursovai.View" xmlns:viewmodel="clr-namespace:Cursovai.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:StocksViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600">
+    <Grid>
+        <ScrollViewer Height="450" Width="550" Margin="25">
+            <ListView x:Name="Promocode" Margin="5" ItemsSource="{Binding promoCodes}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5" Background="Yellow">
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <TextBlock Text="Осталось использований " FontSize="20" Margin="5"/>
+                                <TextBlock x:Name="number_use" Text="{Binding Path = number_use}" Width="100"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <TextBlock Text="Размер скидки " FontSize="20" Margin="5"/>
+                                <TextBlock x:Name="discount_amount" Text="{Binding Path=discount_amount}" FontSize="20" Margin="5">%</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <TextBlock Text="Промокод " FontSize="20" Margin="5"/>
+                                <TextBlock x:Name="name" Text="{Binding Path=name}" FontSize="20" Margin="5"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
