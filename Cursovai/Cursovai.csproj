@@ -87,6 +87,7 @@
     <Compile Include="ViewModel\HistoryViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\OrderHistoryViewModel.cs" />
     <Compile Include="ViewModel\ReportViewModel.cs" />
     <Compile Include="ViewModel\StocksViewModel.cs" />
     <Compile Include="ViewModel\Window_OrderViewModel.cs" />
@@ -107,6 +108,9 @@
     </Compile>
     <Compile Include="View\Window_Order.xaml.cs">
       <DependentUpon>Window_Order.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window_OrderHistory.xaml.cs">
+      <DependentUpon>Window_OrderHistory.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Window_Order.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window_OrderHistory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

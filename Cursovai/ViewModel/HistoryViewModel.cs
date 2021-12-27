@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BLL.Interfaces;
 using BLL.Model;
 using System.Collections.ObjectModel;
+using Cursovai.View;
 
 namespace Cursovai.ViewModel
 {
@@ -33,5 +34,23 @@ namespace Cursovai.ViewModel
                 OnPropertyChanged("");
             }
         }
+        private ModelOrder _order;
+        public ModelOrder order
+        {
+            get
+            {
+                return _order;
+            }
+            set
+            {
+                _order = value;
+                if (_order != null)
+                {
+                    Window_OrderHistory window = new Window_OrderHistory(history, _order);
+                    window.ShowDialog();
+                    _orders = new ObservableCollection<ModelOrder>(history.orders());
+                }
+                OnPropertyChanged("");
+        } }
     }
 }

@@ -9,7 +9,7 @@
              d:DesignHeight="500" d:DesignWidth="600">
     <Grid>
         <ScrollViewer Height="450" Margin="25">
-            <ListView x:Name="Order" Margin="5" ItemsSource="{Binding orders}">
+            <ListView x:Name="Order" Margin="5" ItemsSource="{Binding orders}" SelectedItem="{Binding order}">
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <Border HorizontalAlignment="Center" BorderBrush="{Binding color}" BorderThickness="3">                           

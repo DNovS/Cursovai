@@ -13,6 +13,7 @@ namespace BLL.Model
         public string color { get; set; }
         public string date_com { get; set; }
         public string date_reg { get; set; }
+        public string cancel_visibal { get; set; }
         #endregion
         public string code { get; set; }
         public int id_order { get; set; }
@@ -41,6 +42,7 @@ namespace BLL.Model
             this.fcs = order.Client.FCS;
             this.date_com = complition_date == DateTime.MinValue ? "\"не определено\"" : complition_date.ToString();
             this.date_reg = registration_date == DateTime.MinValue ? "\"не определено\"" : registration_date.ToString();
+            this.cancel_visibal = id_state != 1 ? "Hidden" : "Visible"; 
             switch (order.id_state)
             {
                 case 1:
